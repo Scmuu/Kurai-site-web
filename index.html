@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Kurai | Academy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root{
+      --bg: #0a0a0f;
+      --text: #e4e4e7;
+      --muted: #a1a1aa;
+      --accent: #d400ff;
+      --accent2:#8b00ff;
+
+      /* altezza navbar + gap (serve per gli offset) */
+      --nav-h: 72px;
+      --nav-gap: 18px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* CANVAS */
+    #particles {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: rgba(10,10,15,0.96);
+      backdrop-filter: blur(22px);
+      z-index: 1001;
+      border-bottom: 1px solid rgba(139,0,255,0.25);
+    }
+
+    .nav-container{
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 18px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link{
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      font-size: 15px;
+    }
+    .nav-link:hover, .nav-link.active{
+      color: #fff;
+      background: rgba(139,0,255,0.16);
+      box-shadow: 0 10px 26px rgba(139,0,255,0.20);
+      transform: translateY(-1px);
+    }
+
+    /* CONTENITORE: padding-top = navbar + spazio */
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 34px) 20px 70px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* SEZIONI: IMPORTANTISSIMO per evitare spazio vuoto */
+    .section{
+      display: none; /* quando non attiva NON occupa spazio */
+      margin: 0;     /* niente margini che creano gap strani */
+      padding: 0;    /* padding lo mettiamo nel box interno */
+      scroll-margin-top: calc(var(--nav-h) + var(--nav-gap)); /* offset navbar fissa */ /* [web:54] */
+    }
+    .section.active{ display: block; }
+
+    /* CARD “GLASS” interna (così la section non crea spazi strani) */
+    .panel{
+      background: rgba(20,10,40,0.55);
+      border: 1px solid rgba(139,0,255,0.28);
+      border-radius: 26px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+      padding: clamp(22px, 4vw, 40px);
+    }
+
+    /* HEADER HOME */
+    .header{
+      text-align: center;
+      margin-bottom: 26px;
+    }
+    .logo{
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 22px;
+      border-radius: 24px;
+      object-fit: cover;
+      display: block;
+      filter: drop-shadow(0 0 34px rgba(139,0,255,0.85));
+      transition: 0.35s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .logo:hover{
+      transform: scale(1.05) rotate(2deg);
+      filter: drop-shadow(0 0 48px rgba(139,0,255,1));
+    }
+
+    @keyframes float{
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+    }
+
+    h1{
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      background: linear-gradient(135deg, var(--accent2), var(--accent), #ff00aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .tagline{
+      color: var(--accent);
+      font-weight: 300;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      text-shadow:
+        0 0 12px rgba(212,0,255,0.55),
+        0 0 22px rgba(212,0,255,0.35);
+      margin: 0 auto 26px;
+      max-width: 900px;
+    }
+
+    /* TITOLI SEZIONI */
+    .section h2{
+      color: var(--accent);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 26px;
+      text-align: center;
+      position: relative;
+      font-weight: 700;
+    }
+    .section h2::after{
+      content:'';
+      position:absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom:-14px;
+      width: 90px;
+      height: 3px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, transparent, var(--accent2), var(--accent), transparent);
+    }
+
+    /* SOCIAL HOME */
+    .home-social{
+      margin-top: 14px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(139,0,255,0.25);
+    }
+    .home-social h3{
+      color: var(--accent);
+      font-size: 1.55rem;
+      text-align: center;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .home-social-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .home-social-card{
+      text-decoration: none;
+      color: #fff;
+      background: rgba(15,5,35,0.70);
+      border: 1px solid rgba(139,0,255,0.30);
+      border-radius: 20px;
+      padding: 20px 18px;
+      text-align: center;
+      transition: 0.35s ease;
+    }
+    .home-social-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(212,0,255,0.6);
+      box-shadow: 0 24px 60px rgba(139,0,255,0.25);
+    }
+    .social-logo{
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 12px;
+      border-radius: 16px;
+      object-fit: contain;
+      display:block;
+      filter: drop-shadow(0 0 14px rgba(139,0,255,0.45));
+    }
+    .social-name{ font-weight: 700; margin-bottom: 4px; }
+    .social-handle{ opacity: 0.85; font-size: 0.95rem; }
+
+    /* ROSTER */
+    .roster-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .roster-card{
+      background: rgba(15,5,35,0.70);
+      border: 1px solid rgba(139,0,255,0.28);
+      border-radius: 20px;
+      padding: 22px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+    .roster-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(212,0,255,0.6);
+      box-shadow: 0 20px 55px rgba(139,0,255,0.22);
+    }
+
+    /* ROLES */
+    .roles-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .role-card{
+      background: rgba(15,5,35,0.70);
+      border: 1px solid rgba(139,0,255,0.28);
+      border-radius: 20px;
+      padding: 24px;
+      transition: 0.3s ease;
+    }
+    .role-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(212,0,255,0.6);
+    }
+    .role-name{
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1.55rem;
+      margin-bottom: 10px;
+    }
+
+    /* FORM */
+    .form-group{ margin: 18px 0; }
+    input, select, textarea{
+      width:100%;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(139,0,255,0.35);
+      background: rgba(25,15,50,0.55);
+      color:#fff;
+      font-size: 16px;
+      outline: none;
+      transition: 0.25s ease;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(212,0,255,0.75);
+      box-shadow: 0 0 0 4px rgba(139,0,255,0.14);
+    }
+    button{
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 16px;
+      cursor:pointer;
+      font-weight: 800;
+      font-size: 17px;
+      color:#fff;
+      background: linear-gradient(135deg, var(--accent2), var(--accent), #ff00aa);
+      box-shadow: 0 18px 45px rgba(139,0,255,0.25);
+      transition: 0.3s ease;
+    }
+    button:hover{ transform: translateY(-4px); }
+
+    /* SOCIAL PAGE */
+    .social-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .social-card{
+      text-decoration:none;
+      color:#fff;
+      background: rgba(15,5,35,0.70);
+      border: 1px solid rgba(139,0,255,0.30);
+      border-radius: 20px;
+      padding: 22px;
+      text-align:center;
+      transition: 0.3s ease;
+    }
+    .social-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(212,0,255,0.6);
+    }
+
+    @media (max-width: 600px){
+      :root{ --nav-h: 96px; } /* navbar più alta su mobile (wrap) */
+      .nav-container{ gap: 10px; }
+      .logo{ width: 130px; height: 130px; }
+      .roles-grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="particles"></canvas>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-link active" onclick="showSection(event,'home')">Home</a>
+      <a href="#" class="nav-link" onclick="showSection(event,'roster')">Roster</a>
+      <a href="#" class="nav-link" onclick="showSection(event,'roles')">Roles</a>
+      <a href="#" class="nav-link" onclick="showSection(event,'apply')">Apply</a>
+      <a href="#" class="nav-link" onclick="showSection(event,'social')">Social</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <section id="home" class="section active">
+      <div class="panel">
+        <div class="header">
+          <img src="image.jpg" alt="Team Kurai Logo" class="logo">
+          <h1>Team Kurai</h1>
+          <div class="tagline">Beyond the absence of light, we define presence, form, and focus.</div>
+        </div>
+
+        <div class="home-social">
+          <h3>Follow Us</h3>
+          <div class="home-social-grid">
+            <a href="https://discord.gg/4NbBg5Dfkc" class="home-social-card" target="_blank" rel="noopener">
+              <img src="discord-logo.png" alt="Discord" class="social-logo">
+              <div class="social-name">Discord</div>
+              <div class="social-handle">discord.gg/4NbBg5Dfkc</div>
+            </a>
+
+            <a href="https://www.tiktok.com/@team_kurai" class="home-social-card" target="_blank" rel="noopener">
+              <img src="tiktok-logo.png" alt="TikTok" class="social-logo">
+              <div class="social-name">TikTok</div>
+              <div class="social-handle">@team_kurai</div>
+            </a>
+
+            <a href="https://x.com/team_kurai" class="home-social-card" target="_blank" rel="noopener">
+              <img src="twitter-logo.png" alt="Twitter/X" class="social-logo">
+              <div class="social-name">Twitter/X</div>
+              <div class="social-handle">@team_kurai</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roster" class="section">
+      <div class="panel">
+        <h2>Division Leaders</h2>
+        <div class="roster-grid">
+          <div class="roster-card"><div style="color:#d400ff;font-weight:700;margin-bottom:12px;">Main Leaders</div>Kurai Metal<br>Kurai Ryuhika</div>
+          <div class="roster-card"><div style="color:#d400ff;font-weight:700;margin-bottom:12px;">Comp Lead</div>Kurai K4mz</div>
+          <div class="roster-card"><div style="color:#d400ff;font-weight:700;margin-bottom:12px;">CCH Lead</div>Kurai Mossa<br>Kurai Cbaz</div>
+          <div class="roster-card"><div style="color:#d400ff;font-weight:700;margin-bottom:12px;">VFX Lead</div>Kurai Tei<br>Kurai Renji</div>
+          <div class="roster-card"><div style="color:#d400ff;font-weight:700;margin-bottom:12px;">Freestyler Lead</div>Kurai Paradise</div>
+          <div class="roster-card"><div style="color:#d400ff;font-weight:700;margin-bottom:12px;">Content Lead</div>Kurai Perplex<br>Kurai Renji</div>
+          <div class="roster-card"><div style="color:#d400ff;font-weight:700;margin-bottom:12px;">Moderator</div>Kurai Freezie</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles" class="section">
+      <div class="panel">
+        <h2>Available Roles</h2>
+        <div class="roles-grid">
+          <div class="role-card">
+            <div class="role-name">Competitive</div>
+            <p>The competitive division focuses on ranked ladder climbing, tournaments and scrims. Perfect for players aiming for high ranks in Rocket League.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-name">CCH</div>
+            <p>Comp Clip Hitter division for ranked players who create highlight clips from their competitive gameplay. Focus on creative editing of ranked moments.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-name">VFX &amp; GFX</div>
+            <p>Visual Effects and Graphics division dedicated to editing clips, creating profile pictures, banners, thumbnails, and motion graphics for the team.</p>
+          </div>
+          <div class="role-card">
+            <div class="role-name">Freestyler</div>
+            <p>Freestyle division for players with advanced freestyle skills on Rocket League. Requires high mechanical skill and creativity in aerials, dribbles and flicks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply" class="section">
+      <div class="panel">
+        <h2>Apply Now</h2>
+        <form id="applyForm" action="https://formspree.io/f/mojjqpwn" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="discord" placeholder="Discord Tag (ex: kurai#1234)" required>
+          </div>
+          <div class="form-group">
+            <select name="division" required>
+              <option value="">Select Your Division</option>
+              <option value="competitive">Competitive</option>
+              <option value="cch">CCH (Comp Clip Hitter)</option>
+              <option value="vfx">VFX & GFX</option>
+              <option value="freestyler">Freestyler</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Why do you want to join Team Kurai? Your experience & skills?" rows="5" required></textarea>
+          </div>
+          <button type="submit">Submit Application</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="social" class="section">
+      <div class="panel">
+        <h2>Follow Us</h2>
+        <div class="social-grid">
+          <a href="https://discord.gg/4NbBg5Dfkc" class="social-card" target="_blank" rel="noopener">
+            <img src="discord-logo.png" alt="Discord" style="width:80px;height:80px;margin:0 auto 16px;border-radius:20px;object-fit:contain;display:block;">
+            <div style="font-size:1.15rem;font-weight:800;">Discord Server</div>
+            <div style="opacity:0.85;">discord.gg/4NbBg5Dfkc</div>
+          </a>
+          <a href="https://www.tiktok.com/@team_kurai" class="social-card" target="_blank" rel="noopener">
+            <img src="tiktok-logo.png" alt="TikTok" style="width:80px;height:80px;margin:0 auto 16px;border-radius:20px;object-fit:contain;display:block;">
+            <div style="font-size:1.15rem;font-weight:800;">TikTok</div>
+            <div style="opacity:0.85;">@team_kurai</div>
+          </a>
+          <a href="https://x.com/team_kurai" class="social-card" target="_blank" rel="noopener">
+            <img src="twitter-logo.png" alt="Twitter/X" style="width:80px;height:80px;margin:0 auto 16px;border-radius:20px;object-fit:contain;display:block;">
+            <div style="font-size:1.15rem;font-weight:800;">Twitter/X</div>
+            <div style="opacity:0.85;">@team_kurai</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // PARTICELLE (leggere)
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+
+    let particles = [];
+    const mouse = { x: 0, y: 0 };
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.7;
+        this.vx = (Math.random() - 0.5) * 0.45;
+        this.vy = (Math.random() - 0.5) * 0.45;
+        this.h = 270 + Math.random() * 35;
+        this.a = Math.random() * 0.45 + 0.25;
+      }
+      update() {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const d = Math.hypot(dx, dy);
+
+        if (d < 120) {
+          this.vx += dx * 0.0006;
+          this.vy += dy * 0.0006;
+        }
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.a;
+        ctx.fillStyle = `hsla(${this.h}, 75%, 40%, ${this.a})`;
+        ctx.shadowColor = `hsla(${this.h}, 75%, 55%, 0.7)`;
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initParticles(){
+      particles = [];
+      const count = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 22000));
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    initParticles();
+
+    function animate(){
+      ctx.fillStyle = 'rgba(10,10,15,0.12)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      initParticles();
+    });
+
+    // NAV SWITCH (senza gap strani + scroll corretto)
+    function showSection(e, sectionId) {
+      e.preventDefault();
+
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(sectionId);
+      target.classList.add('active');
+
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+
+      // scroll preciso (tenendo conto della navbar fissa)
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    const form = document.getElementById('applyForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      form.reset();
+      alert('Candidatura inviata! Ti contatteremo su Discord.');
+    } else {
+      alert('Errore: candidatura non inviata. Riprova.');
+    }
+  } catch (err) {
+    alert('Errore di rete. Riprova più tardi.');
+  }
+});
+
+  </script>
+</body>
+</html>
