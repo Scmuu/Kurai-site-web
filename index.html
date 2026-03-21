@@ -325,6 +325,42 @@
       transform: translateY(-6px);
       border-color: rgba(212,0,255,0.6);
     }
+      /* AGGIUNGI QUI IL NUOVO CSS */
+  .offer-card {
+    background: rgba(15,5,35,0.75);
+    border: 1px solid rgba(139,0,255,0.35);
+    border-radius: 24px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(212,0,255,0.08), transparent);
+    opacity: 0;
+    transition: 0.35s ease;
+  }
+  .offer-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(212,0,255,0.7);
+    box-shadow: 
+      0 28px 70px rgba(139,0,255,0.3),
+      0 0 32px rgba(212,0,255,0.25) inset;
+  }
+  .offer-card:hover::before {
+    opacity: 1;
+  }
+  @media (max-width: 600px) {
+    .offer-card { padding: 24px 20px; }
+  }
+  /* FINE NUOVO CSS */
+
+ </style>
 
     @media (max-width: 600px){
       :root{ --nav-h: 96px; } /* navbar più alta su mobile (wrap) */
@@ -358,29 +394,50 @@
           <div class="tagline">Beyond the absence of light, we define presence, form, and focus.</div>
         </div>
 
-        <div class="home-social">
-          <h3>Follow Us</h3>
-          <div class="home-social-grid">
-            <a href="https://discord.gg/4NbBg5Dfkc" class="home-social-card" target="_blank" rel="noopener">
-              <img src="discord-logo.png" alt="Discord" class="social-logo">
-              <div class="social-name">Discord</div>
-              <div class="social-handle">discord.gg/4NbBg5Dfkc</div>
-            </a>
+ <div class="home-social">
+  <!-- Who We Are -->
+  <h3>Who We Are</h3>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 28px; font-size: 1.05rem; opacity: 0.95;">
+    Team Kurai is a Rocket League community for competitive players, freestylers, clip hitters and content creators. 
+    We grind ranks, share clips and build epic montages together.
+  </p>
 
-            <a href="https://www.tiktok.com/@team_kurai" class="home-social-card" target="_blank" rel="noopener">
-              <img src="tiktok-logo.png" alt="TikTok" class="social-logo">
-              <div class="social-name">TikTok</div>
-              <div class="social-handle">@team_kurai</div>
-            </a>
+  <!-- What We Offer (NUOVO - stile identico) -->
+  <h3>What We Offer</h3>
+  <div style="display: flex; gap: 22px; margin-top: 28px; max-width: 1100px; margin: 0 auto; justify-content: center;">
+    <div class="offer-card" style="flex: 1; min-width: 320px; max-width: 360px;">
+      <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 16px;">Clip & Freestyle</div>
+      <p style="margin: 0; opacity: 0.92; font-size: 1rem; line-height: 1.55;">Share highlights<br>get feedback<br>creative collabs</p>
+    </div>
+    <div class="offer-card" style="flex: 1; min-width: 320px; max-width: 360px;">
+      <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 16px;">GFX & VFX</div>
+      <p style="margin: 0; opacity: 0.92; font-size: 1rem; line-height: 1.55;">Thumbnails & banners<br>motion graphics<br>team editors</p>
+    </div>
+    <div class="offer-card" style="flex: 1; min-width: 320px; max-width: 360px;">
+      <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 16px;">Community</div>
+      <p style="margin: 0; opacity: 0.92; font-size: 1rem; line-height: 1.55;">Non-toxic<br>staff support<br>growth opportunities</p>
+    </div>
+  </div>
+  <!-- Server Stats -->
+<div style="margin-top: 42px; padding-top: 28px; border-top: 1px solid rgba(139,0,255,0.25);">
+  <div style="display: flex; gap: 8px; justify-content: center; align-items: center; max-width: 800px; margin: 0 auto; flex-wrap: wrap;">
+    <div style="background: rgba(139,0,255,0.15); border: 1px solid rgba(139,0,255,0.4); border-radius: 20px; padding: 20px 28px; text-align: center; min-width: 140px; backdrop-filter: blur(12px);">
+      <div style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), #ff00aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 4px;">600+</div>
+      <div style="font-size: 0.95rem; opacity: 0.9; font-weight: 500;">Members</div>
+    </div>
+    <div style="background: rgba(139,0,255,0.15); border: 1px solid rgba(139,0,255,0.4); border-radius: 20px; padding: 20px 28px; text-align: center; min-width: 140px; backdrop-filter: blur(12px);">
+      <div style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), #ff00aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 4px;">10+</div>
+      <div style="font-size: 0.95rem; opacity: 0.9; font-weight: 500;">Nations</div>
+    </div>
+    <div style="background: rgba(139,0,255,0.15); border: 1px solid rgba(139,0,255,0.4); border-radius: 20px; padding: 20px 28px; text-align: center; min-width: 140px; backdrop-filter: blur(12px);">
+      <div style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), #ff00aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 4px;">6+</div>
+      <div style="font-size: 0.95rem; opacity: 0.9; font-weight: 500;">Applications</div>
+    </div>
+  </div>
+</div>
 
-            <a href="https://x.com/team_kurai" class="home-social-card" target="_blank" rel="noopener">
-              <img src="twitter-logo.png" alt="Twitter/X" class="social-logo">
-              <div class="social-name">Twitter/X</div>
-              <div class="social-handle">@team_kurai</div>
-            </a>
-          </div>
-        </div>
-      </div>
+</div>
+
     </section>
 
     <section id="roster" class="section">
