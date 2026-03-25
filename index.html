@@ -245,32 +245,6 @@
       border-color: rgba(212,0,255,0.6);
       box-shadow: 0 20px 55px rgba(139,0,255,0.22);
     }
-
-    /* ROLES */
-    .roles-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-    .role-card{
-      background: rgba(15,5,35,0.70);
-      border: 1px solid rgba(139,0,255,0.28);
-      border-radius: 20px;
-      padding: 24px;
-      transition: 0.3s ease;
-    }
-    .role-card:hover{
-      transform: translateY(-6px);
-      border-color: rgba(212,0,255,0.6);
-    }
-    .role-name{
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 1.55rem;
-      margin-bottom: 10px;
-    }
-
     /* FORM */
     .form-group{ margin: 18px 0; }
     input, select, textarea{
@@ -378,7 +352,6 @@
     <div class="nav-container">
       <a href="#" class="nav-link active" onclick="showSection(event,'home')">Home</a>
       <a href="#" class="nav-link" onclick="showSection(event,'roster')">Roster</a>
-      <a href="#" class="nav-link" onclick="showSection(event,'roles')">Roles</a>
       <a href="#" class="nav-link" onclick="showSection(event,'apply')">Apply</a>
       <a href="#" class="nav-link" onclick="showSection(event,'social')">Social</a>
     </div>
