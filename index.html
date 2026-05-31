@@ -191,14 +191,16 @@
       gap: 18px;
       margin-top: 18px;
     }
-    .roster-card{
-      background: rgba(15,5,35,0.70);
-      border: 1px solid rgba(139,0,255,0.28);
-      border-radius: 20px;
-      padding: 22px;
-      text-align: center;
-      transition: 0.3s ease;
-    }
+  .roster-card{
+  background: rgba(15,5,35,0.70);
+  border: 1px solid rgba(139,0,255,0.28);
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+  transition: 0.3s ease;
+  max-width: 480px;   /* NEW: larghezza massima card */
+  margin: 0 auto;     /* NEW: centra la card nel grid */
+}
     .roster-card:hover{
       transform: translateY(-6px);
       border-color: rgba(212,0,255,0.6);
@@ -303,6 +305,14 @@
   .offer-card{
     width: 100%;
     max-width: 360px;      
+  }
+  .roster-grid{
+    grid-template-columns: 1fr; /* una colonna */
+    justify-items: center;      /* centra le card nella griglia */
+  }
+  .roster-card{
+    width: 100%;
+    max-width: 420px;           /* leggermente più stretta per i telefoni */
   }
 }
   </style>
