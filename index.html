@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,6 +10,7 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
+<<<<<<< HEAD
       --bg:#080808;
       --surface:#111;
       --surface-alt:#181818;
@@ -40,6 +41,15 @@
       content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
       background-repeat:repeat;background-size:180px;
+=======
+      --bg: #0a0a0f;
+      --text: #e4e4e7;
+      --muted: #a1a1aa;
+      --accent: #d400ff;
+      --accent2:#8b00ff;
+      --nav-h: 72px;
+      --nav-gap: 18px;
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     }
 
     /* PROGRESS BAR */
@@ -48,6 +58,7 @@
       background:var(--accent);transform:scaleX(0);transform-origin:left;
     }
 
+<<<<<<< HEAD
     /* NAV */
     nav{
       position:fixed;top:0;left:0;right:0;height:var(--nav-h);
@@ -58,6 +69,25 @@
     nav.scrolled{
       background:rgba(8,8,8,.92);backdrop-filter:blur(16px);
       border-bottom-color:var(--border);
+=======
+    #particles {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .navbar{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: rgba(10,10,15,0.96);
+      backdrop-filter: blur(22px);
+      z-index: 1001;
+      border-bottom: 1px solid rgba(139,0,255,0.25);
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     }
     .nav-inner{
       width:100%;max-width:1200px;margin:0 auto;padding:0 40px;
@@ -74,9 +104,20 @@
     }
     .nav-links{display:flex;gap:4px}
     .nav-link{
+<<<<<<< HEAD
       font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
       color:var(--muted);text-decoration:none;padding:8px 16px;position:relative;
       transition:color .2s;
+=======
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      font-size: 15px;
+      white-space: nowrap;
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     }
     .nav-link::after{
       content:'';position:absolute;bottom:4px;left:16px;right:16px;height:1px;
@@ -172,6 +213,7 @@
       text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:6px;
     }
 
+<<<<<<< HEAD
     /* LAYOUT */
     .container{max-width:1200px;margin:0 auto;padding:0 40px}
     .sec{padding:140px 0}
@@ -216,6 +258,38 @@
       content:'';position:absolute;top:0;left:0;right:0;height:2px;
       background:var(--accent);transform:scaleX(0);transform-origin:left;
       transition:transform .35s var(--ease-out);
+=======
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 34px) 20px 70px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section{
+      display: none;
+      margin: 0;
+      padding: 0;
+      scroll-margin-top: calc(var(--nav-h) + var(--nav-gap));
+    }
+    .section.active{ display: block; }
+
+ .panel{
+  background: rgba(20,10,40,0.55);
+  border: 1px solid rgba(139,0,255,0.28);
+  border-radius: 26px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+  padding: clamp(22px, 4vw, 40px);
+  max-width: 900px;  
+  margin: 0 auto;    
+}
+
+    .header{
+      text-align: center;
+      margin-bottom: 26px;
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     }
     .pillar:hover{background:var(--surface)}
     .pillar:hover::before{transform:scaleX(1)}
@@ -228,6 +302,7 @@
       font-weight:700;font-size:.85rem;letter-spacing:.06em;
       text-transform:uppercase;color:#fff;margin-bottom:10px;
     }
+<<<<<<< HEAD
     .pillar-text{font-size:.84rem;color:var(--muted);line-height:1.7}
 
     /* ROSTER */
@@ -249,6 +324,102 @@
       background:var(--bg);padding:24px;
       border:1px solid var(--border);margin:-0.5px;
       transition:background .25s,border-color .25s,box-shadow .3s;
+=======
+
+    @keyframes float{
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+    }
+
+    h1{
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      background: linear-gradient(135deg, var(--accent2), var(--accent), #ff00aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .tagline{
+      color: var(--accent);
+      font-weight: 300;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      text-shadow:
+        0 0 12px rgba(212,0,255,0.55),
+        0 0 22px rgba(212,0,255,0.35);
+      margin: 0 auto 26px;
+      max-width: 900px;
+    }
+
+    .section h2{
+      color: var(--accent);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 26px;
+      text-align: center;
+      position: relative;
+      font-weight: 700;
+    }
+    .section h2::after{
+      content:'';
+      position:absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom:-14px;
+      width: 90px;
+      height: 3px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, transparent, var(--accent2), var(--accent), transparent);
+    }
+
+    .home-social{
+      margin-top: 14px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(139,0,255,0.25);
+    }
+    .home-social h3{
+      color: var(--accent);
+      font-size: 1.55rem;
+      text-align: center;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .roster-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+  .roster-card{
+  background: rgba(15,5,35,0.70);
+  border: 1px solid rgba(139,0,255,0.28);
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+  transition: 0.3s ease;
+  max-width: 480px;   /* NEW: larghezza massima card */
+  margin: 0 auto;     /* NEW: centra la card nel grid */
+}
+    .roster-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(212,0,255,0.6);
+      box-shadow: 0 20px 55px rgba(139,0,255,0.22);
+    }
+
+    .form-group{ margin: 18px 0; }
+    input, select, textarea{
+      width:100%;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(139,0,255,0.35);
+      background: rgba(25,15,50,0.55);
+      color:#fff;
+      font-size: 16px;
+      outline: none;
+      transition: 0.25s ease;
+      font-family: inherit;
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     }
     .lead-card:hover{
       background:var(--surface);border-color:rgba(102,0,255,.3);
@@ -263,6 +434,7 @@
       font-size:1.5rem;letter-spacing:.06em;color:#fff;
     }
 
+<<<<<<< HEAD
     /* Marquee */
     .marquee-wrap{
       overflow:hidden;padding:2px 0;
@@ -334,6 +506,8 @@
 
     /* FOOTER */
     footer{border-top:1px solid var(--border);padding:80px 0 40px}
+=======
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     .social-grid{
       display:grid;grid-template-columns:repeat(3,1fr);
       gap:1px;background:var(--border);margin-bottom:56px;
@@ -366,6 +540,7 @@
       font-size:.72rem;color:var(--dim);letter-spacing:.04em;
     }
 
+<<<<<<< HEAD
     /* SCROLL REVEAL */
     .reveal{
       opacity:0;transform:translateY(28px);
@@ -402,11 +577,73 @@
       .lead-grid{grid-template-columns:1fr 1fr}
       .hero-cta{flex-direction:column;width:100%;max-width:260px}
       .btn{justify-content:center;width:100%}
+=======
+    .offer-card {
+      background: rgba(15,5,35,0.75);
+      border: 1px solid rgba(139,0,255,0.35);
+      border-radius: 24px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     }
+    .offer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, transparent, rgba(212,0,255,0.08), transparent);
+      opacity: 0;
+      transition: 0.35s ease;
+    }
+    .offer-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(212,0,255,0.7);
+      box-shadow:
+        0 28px 70px rgba(139,0,255,0.3),
+        0 0 32px rgba(212,0,255,0.25) inset;
+    }
+    .offer-card:hover::before {
+      opacity: 1;
+    }
+
+@media (max-width: 600px){
+  :root{ --nav-h: 96px; }
+  .nav-container{
+    justify-content: center;
+    gap: 8px;
+  }
+  .logo{ width: 130px; height: 130px; }
+
+  .home-social-offers{
+    flex-direction: column;
+    align-items: center;   
+  }
+  .offer-card{
+    width: 100%;
+    max-width: 360px;      
+  }
+  .roster-grid{
+    grid-template-columns: 1fr; /* una colonna */
+    justify-items: center;      /* centra le card nella griglia */
+  }
+  .roster-card{
+    width: 100%;
+    max-width: 420px;           /* leggermente più stretta per i telefoni */
+  }
+}
   </style>
 </head>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
 <body>
 
+<<<<<<< HEAD
 <div class="progress" id="progress"></div>
 
 <nav id="nav">
@@ -417,10 +654,20 @@
       <a href="#roster" class="nav-link">Roster</a>
       <a href="#apply" class="nav-link">Apply</a>
       <a href="#social" class="nav-link">Social</a>
+=======
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-link active" onclick="showSection(event,'home')">Home</a>
+      <a href="#" class="nav-link" onclick="showSection(event,'roster')">Roster</a>
+      <a href="#" class="nav-link" onclick="showSection(event,'apply')">Apply</a>
+      <a href="#" class="nav-link" onclick="showSection(event,'social')">Social</a>
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     </div>
   </div>
 </nav>
 
+<<<<<<< HEAD
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-line"></div>
@@ -482,10 +729,177 @@
         <div class="pillar-title">Community</div>
         <div class="pillar-text">Non-toxic environment, staff support, and real growth opportunities for every member.</div>
       </div>
+=======
+
+  <div class="container">
+
+
+    <section id="home" class="section active">
+      <div class="panel">
+        <div class="header">
+          <img src="image.jpg" alt="Team Kurai Logo" class="logo">
+          <h1>Team Kurai</h1>
+          <div class="tagline">Beyond the absence of light, we define presence, form, and focus.</div>
+        </div>
+
+
+ <div class="home-social">
+  <!-- Who We Are -->
+  <h3>Who We Are ?</h3>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 28px; font-size: 1.05rem; opacity: 0.95;">
+    "Team Kurai is a Rocket League community for competitive players, freestylers, clip hitters and content creators.
+    We grind ranks, share clips and build epic montages together"
+  </p>
+
+<h3>What We Offer ?</h3>
+<div class="home-social-offers"
+     style="display: flex; gap: 22px; margin-top: 28px; max-width: 1100px; margin: 0 auto; justify-content: center;">
+  <div class="offer-card" style="flex: 1; min-width: 320px; max-width: 360px;">
+    <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 16px;">
+      Clip & Freestyle
+    </div>
+    <p style="margin: 0; opacity: 0.92; font-size: 1rem; line-height: 1.55;">
+      Share highlights<br>get feedback<br>creative collabs
+    </p>
+  </div>
+
+  <div class="offer-card" style="flex: 1; min-width: 320px; max-width: 360px;">
+    <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 16px;">
+      GFX & VFX
+    </div>
+    <p style="margin: 0; opacity: 0.92; font-size: 1rem; line-height: 1.55;">
+      Thumbnails & banners<br>motion graphics<br>team editors
+    </p>
+  </div>
+
+  <div class="offer-card" style="flex: 1; min-width: 320px; max-width: 360px;">
+    <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 16px;">
+      Community
+    </div>
+    <p style="margin: 0; opacity: 0.92; font-size: 1rem; line-height: 1.55;">
+      Non-toxic<br>staff support<br>growth opportunities
+    </p>
+  </div>
+</div>
+</div>
+
+    </section>
+<section id="roster" class="section">
+  <div class="panel">
+    <h2>Kurai Roster</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-top: 24px;">
+     
+      <!-- LEADERS -->
+      <div class="roster-card" style="grid-column: 1 / -1; text-align: center;">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.6rem; margin-bottom: 16px;">𝐋𝐄𝐀𝐃𝐄𝐑𝐒</div>
+        <div style="font-size: 1.3rem; font-weight: 700; color: #fff;">◆ Ryuhika ◆ Metal</div>
+      </div>
+
+
+      <!-- MODS/STAYYERS -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐌𝐎𝐃𝐒/𝐒𝐓𝐀𝐘𝐘𝐄𝐑𝐒 - 9/10</div>
+        <div style="line-height: 1.6;">Price, Freezie, Lexis, Prismx, Pipgong, gible, Swe, Tozai, Vex</div>
+      </div>
+
+
+      <!-- SMM -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐒𝐌𝐌 - 1/3</div>
+        <div style="line-height: 1.6;">Tei</div>
+      </div>
+
+
+      <!-- SITE DEVELOPERS -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐒𝐈𝐓𝐄 𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑𝐒 - 2/3</div>
+        <div style="line-height: 1.6;">Nunx, Sxmu</div>
+      </div>
+
+
+      <!-- DECAL DESIGNER -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐃𝐄𝐂𝐀𝐋 𝐃𝐄𝐒𝐈𝐆𝐍𝐄𝐑 - 1/3</div>
+        <div style="line-height: 1.6;">Nyx</div>
+      </div>
+
+
+      <!-- CONTENT CREATORS -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐂𝐎𝐍𝐓𝐄𝐍𝐓 𝐂𝐑𝐄𝐀𝐓𝐎𝐑𝐒 - 11/15</div>
+        <div style="line-height: 1.6;">◆ Perplex (lead), ◆ Renji (lead), Drakozz, Knight, M7md, Rya, Shiiya, Splead, NandoX, Fyve, Mystic</div>
+      </div>
+
+
+      <!-- CCH -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐂𝐂𝐇 - 10/15</div>
+        <div style="line-height: 1.6;">◆ Cbaz (lead), ◆ Mossa (lead), GrXque, Freezie, Loenka, Nibby, Tyme, Zoft, Lyzix, Milan</div>
+      </div>
+
+
+      <!-- CCH ACADEMY -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐂𝐂𝐇 𝐀𝐂𝐀𝐃𝐄𝐌𝐘 - 2/3</div>
+        <div style="line-height: 1.6;">nimano, Medi</div>
+      </div>
+
+
+      <!-- FREESTYLERS -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐅𝐑𝐄𝐄𝐒𝐓𝐘𝐋𝐄𝐑𝐒 - 11/15</div>
+        <div style="line-height: 1.6;">◆ Paradise (lead), Fliqz, Freezi, Isora, Kaxy, Nata, Relo, locsil, Lightsu, Jynx</div>
+      </div>
+
+
+      <!-- NOFLIPPERS -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐍𝐎𝐅𝐋𝐈𝐏𝐏𝐄𝐑𝐒 - 2/10</div>
+        <div style="line-height: 1.6;">Heikikette, Swifty</div>
+      </div>
+
+
+      <!-- COMPETITIVE - FULL -->
+      <div class="roster-card" style="border-color: rgba(0,255,0,0.6);">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐂𝐎𝐌𝐏𝐄𝐓𝐈𝐓𝐈𝐕𝐄 - 12/12 <span style="color: #00ff88; font-weight: 700;">FULL</span></div>
+        <div style="line-height: 1.6;">◆ k4mz (lead), Rea, d1vi, Kosoyo, Pipgong, Ventrxyy, Papybottles, Neptical, Banvi, vyliieee, Jacko, kisu</div>
+      </div>
+
+
+      <!-- COMP ACADEMY - FULL -->
+      <div class="roster-card" style="border-color: rgba(0,255,0,0.6);">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐂𝐎𝐌𝐏 𝐀𝐂𝐀𝐃𝐄𝐌𝐘 - 3/3 <span style="color: #00ff88; font-weight: 700;">FULL</span></div>
+        <div style="line-height: 1.6;">swayz, byako, pkchuz</div>
+      </div>
+
+
+      <!-- VFX - FULL -->
+      <div class="roster-card" style="border-color: rgba(0,255,0,0.6);">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐕𝐅𝐗 - 5/5 <span style="color: #00ff88; font-weight: 700;">FULL</span></div>
+        <div style="line-height: 1.6;">◆ tr1xy (lead), Tei, F3lyx, Rizky, Twist, riino</div>
+      </div>
+
+
+      <!-- VFX ACADEMY - FULL -->
+      <div class="roster-card" style="border-color: rgba(0,255,0,0.6);">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐕𝐅𝐗 𝐀𝐂𝐀𝐃𝐄𝐌𝐘 - 5/5 <span style="color: #00ff88; font-weight: 700;">FULL</span></div>
+        <div style="line-height: 1.6;">Lyriq, Sean, Arashi, blur, yxvk</div>
+      </div>
+
+
+      <!-- GFX -->
+      <div class="roster-card">
+        <div style="color: var(--accent); font-weight: 800; font-size: 1.35rem; margin-bottom: 12px;">𝐆𝐅𝐗 - 4/5</div>
+        <div style="line-height: 1.6;">◆ Metal (lead), Atho, Haze, xeno</div>
+      </div>
+
+
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     </div>
   </div>
 </section>
 
+<<<<<<< HEAD
 <!-- ROSTER -->
 <section class="sec roster" id="roster">
   <div class="roster-glow"></div>
@@ -555,6 +969,15 @@
         </ul>
       </div>
       <div class="apply-form">
+=======
+
+    </section>
+
+
+    <section id="apply" class="section">
+      <div class="panel">
+        <h2>Apply Now</h2>
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
         <form id="applyForm" action="https://formspree.io/f/mojjqpwn" method="POST">
           <div class="form-group">
             <label class="form-label">Your Name</label>
@@ -581,10 +1004,41 @@
           <button type="submit" class="submit-btn">Submit Application →</button>
         </form>
       </div>
+<<<<<<< HEAD
     </div>
+=======
+    </section>
+
+
+    <section id="social" class="section">
+      <div class="panel">
+        <h2>Follow Us</h2>
+        <div class="social-grid">
+          <a href="https://discord.gg/4NbBg5Dfkc" class="social-card" target="_blank" rel="noopener">
+            <img src="discord-logo.png" alt="Discord" style="width:80px;height:80px;margin:0 auto 16px;border-radius:20px;object-fit:contain;display:block;">
+            <div style="font-size:1.15rem;font-weight:800;">Discord Server</div>
+            <div style="opacity:0.85;">discord.gg/4NbBg5Dfkc</div>
+          </a>
+          <a href="https://www.tiktok.com/@team_kurai" class="social-card" target="_blank" rel="noopener">
+            <img src="tiktok-logo.png" alt="TikTok" style="width:80px;height:80px;margin:0 auto 16px;border-radius:20px;object-fit:contain;display:block;">
+            <div style="font-size:1.15rem;font-weight:800;">TikTok</div>
+            <div style="opacity:0.85;">@team_kurai</div>
+          </a>
+          <a href="https://x.com/team_kurai" class="social-card" target="_blank" rel="noopener">
+            <img src="twitter-logo.png" alt="Twitter/X" style="width:80px;height:80px;margin:0 auto 16px;border-radius:20px;object-fit:contain;display:block;">
+            <div style="font-size:1.15rem;font-weight:800;">Twitter/X</div>
+            <div style="opacity:0.85;">@team_kurai</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
   </div>
 </section>
 
+<<<<<<< HEAD
 <!-- FOOTER / SOCIAL -->
 <footer id="social">
   <div class="container">
@@ -641,10 +1095,94 @@
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+=======
+
+  <script>
+    // PARTICELLE (leggere)
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+
+    function resizeCanvas(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+
+
+    let particles = [];
+    const mouse = { x: 0, y: 0 };
+
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.7;
+        this.vx = (Math.random() - 0.5) * 0.45;
+        this.vy = (Math.random() - 0.5) * 0.45;
+        this.h = 270 + Math.random() * 35;
+        this.a = Math.random() * 0.45 + 0.25;
+      }
+      update() {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const d = Math.hypot(dx, dy);
+
+
+        if (d < 120) {
+          this.vx += dx * 0.0006;
+          this.vy += dy * 0.0006;
+        }
+
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.a;
+        ctx.fillStyle = `hsla(${this.h}, 75%, 40%, ${this.a})`;
+        ctx.shadowColor = `hsla(${this.h}, 75%, 55%, 0.7)`;
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+
+    function initParticles(){
+      particles = [];
+      const count = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 22000));
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    initParticles();
+
+
+    function animate(){
+      ctx.fillStyle = 'rgba(10,10,15,0.12)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+<<<<<<< HEAD
   /* Stats counter */
   let counted = false;
   new IntersectionObserver(entries => {
@@ -662,9 +1200,16 @@
           }, 22);
         });
       }
+=======
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      initParticles();
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
     });
   }, { threshold: 0.3 }).observe(document.getElementById('stats-strip'));
 
+<<<<<<< HEAD
   /* Form */
   document.getElementById('applyForm').addEventListener('submit', async e => {
     e.preventDefault();
@@ -679,5 +1224,56 @@
     } catch { alert('Network error — please try again later.'); }
   });
 </script>
+=======
+
+    // NAV SWITCH (senza gap strani + scroll corretto)
+    function showSection(e, sectionId) {
+      e.preventDefault();
+
+
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(sectionId);
+      target.classList.add('active');
+
+
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+
+
+      // scroll preciso (tenendo conto della navbar fissa)
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    const form = document.getElementById('applyForm');
+
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+
+  const data = new FormData(form);
+
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+
+    if (res.ok) {
+      form.reset();
+      alert('Candidatura inviata! Ti contatteremo su Discord.');
+    } else {
+      alert('Errore: candidatura non inviata. Riprova.');
+    }
+  } catch (err) {
+    alert('Errore di rete. Riprova più tardi.');
+  }
+});
+
+
+  </script>
+>>>>>>> 70704daeefd1435e99d26f28ebe092bc5583463e
 </body>
 </html>
