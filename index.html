@@ -700,6 +700,7 @@ footer{
       <div class="sec-label">03 — Join</div>
       <div class="sec-title">APPLY<br>NOW</div>
     </div>
+
     <div class="apply-grid reveal">
       <div class="apply-info">
         <div class="apply-info-title">JOIN<br>TEAM<br><span>KURAI</span></div>
@@ -710,24 +711,26 @@ footer{
           <li>Discord account required for communication</li>
         </ul>
       </div>
+
       <div class="apply-form">
         <form id="applyForm" action="https://usebasin.com/f/bfeb7a06f582" method="POST">
           <div class="form-group">
             <label class="form-label">Age</label>
             <input type="number" name="age" placeholder="Your age" min="1" max="120" required>
           </div>
+
           <div class="form-group">
             <label class="form-label">Discord User</label>
             <input type="text" name="discord" placeholder="your_username" required>
           </div>
+
           <div class="form-group">
             <label class="form-label">Division</label>
             <select name="division" id="divisionSelect" required>
               <option value="">Select Division</option>
               <option value="competitive">Competitive</option>
               <option value="cch">CCH (Comp Clip Hitter)</option>
-              <option value="vfx">Creative
-              </option>
+              <option value="vfx">Creative</option>
               <option value="freestyler">Freestyler</option>
             </select>
           </div>
@@ -767,16 +770,31 @@ footer{
             </div>
           </div>
 
-          <!-- VFX & GFX -->
+          <!-- Creative -->
           <div class="division-fields" data-div="vfx" hidden>
             <div class="form-group">
+              <label class="form-label">Category</label>
+              <select name="creative_category" required disabled>
+                <option value="">Select Category</option>
+                <option value="editor">Editor</option>
+                <option value="designer">Designer</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label class="form-label">Previous Work / Portfolio Link</label>
-              <input type="url" name="vfx_portfolio" placeholder="portfolio/ works" required disabled>
+              <input type="url" name="vfx_portfolio" placeholder="portfolio / works" required disabled>
             </div>
           </div>
 
           <!-- Freestyler -->
           <div class="division-fields" data-div="freestyler" hidden>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select name="freestyler_category" required disabled>
+                <option value="">freestyle</option>
+                <option value="no_flip">noflip</option>
+              </select>
+            </div>
             <div class="form-group">
               <label class="form-label">Clip Montage (at least 1:30)</label>
               <input type="url" name="fs_montage" placeholder="YouTube / Drive / Streamable link" required disabled>
@@ -787,6 +805,7 @@ footer{
             <label class="form-label">Tell us more about yourself</label>
             <textarea name="message" placeholder="Why do you want to join? Your experience & skills?" rows="5" required></textarea>
           </div>
+
           <button type="submit" class="submit-btn">Submit Application →</button>
         </form>
       </div>
