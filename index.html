@@ -336,28 +336,113 @@
       font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
       color:var(--muted);margin-bottom:16px;
     }
-    .lead-grid{
-      display:grid;grid-template-columns:repeat(5,1fr);
-      gap:0;margin-bottom:48px;
-    }
-    .lead-card{
-      background:var(--bg);padding:24px;
-      border:1px solid var(--border);margin:-0.5px;
-      transition:background .25s,border-color .25s,box-shadow .3s;
-    }
-    .lead-card:hover{
-      background:var(--surface);border-color:rgba(102,0,255,.3);
-      box-shadow:0 0 30px rgba(102,0,255,.08);
-    }
-    .lead-role{
-      font-size:9px;font-weight:700;letter-spacing:.18em;
-      text-transform:uppercase;color:var(--accent-light);margin-bottom:8px;
-    }
-    .lead-name{
-      font-family:'Bebas Neue',sans-serif;
-      font-size:1.5rem;letter-spacing:.06em;color:#fff;
-    }
+    /* Griglia flessibile ed elegante */
+.lead-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
 
+/* Card in Stile Kurai / Pulse (Bianca di base) */
+.lead-card {
+  background: #000000;
+  border-radius: 24px; /* Bordi molto arrotondati come in foto */
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  border: none;
+}
+
+/* VARIANTE PER GLI OWNER / LEADS PRINCIPALI (Stile Yota - Sfondo scuro e dettagli viola) */
+.lead-card.owner-variant {
+  background:  rgba(100, 37, 194, 0.3); /* Prende il viola Kurai di sfondo */
+  box-shadow: 0 10px 30px rgba(66, 37, 109, 0.3);
+}
+
+.lead-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.05);
+}
+.lead-card.owner-variant:hover {
+  box-shadow: 0 16px 40px rgba(38, 4, 88, 0.5);
+}
+
+/* Contenitore PFP con Badge integrato */
+.pfp-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 20px;
+}
+
+/* Immagine Profilo Circolare con riflesso */
+.lead-pfp {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #111;
+  display: block;
+}
+
+/* Il piccolo badge nell'angolo in alto a destra (es. bandiera o logo) */
+.pfp-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid #ffffff;
+  object-fit: cover;
+  z-index: 2;
+}
+.lead-card.owner-variant .pfp-badge {
+  border-color: var(--accent);
+}
+
+/* La Pillola del Nome */
+.lead-name-pill {
+  background: #f1f1f1; /* Grigio chiarissimo per far risaltare il testo nero */
+  color: #000000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  padding: 8px 32px;
+  border-radius: 50px; /* Forma a pillola perfetta */
+  width: 85%;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Pillola speciale per l'Owner */
+.lead-card.owner-variant .lead-name-pill {
+  background: #080808; /* Sfondo scuro dentro la card viola */
+  color: #ffffff;
+}
+
+/* Il Ruolo Sotto */
+.lead-role {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #666666; /* Grigio scuro leggibile sul bianco */
+}
+
+/* Ruolo speciale per l'Owner */
+.lead-card.owner-variant .lead-role {
+  color: #ffffff;
+  opacity: 0.9;
+}
     /* Marquee */
     .marquee-wrap{
       overflow:hidden;padding:2px 0;
@@ -666,28 +751,166 @@ footer{
 
     <div class="roster-label reveal">Leads</div>
     <div class="lead-grid reveal">
-      <div class="lead-card"><div class="lead-role">Owner</div><div class="lead-name">Ryuhika</div></div>
-      <div class="lead-card"><div class="lead-role">Owner</div><div class="lead-name">Metal</div></div>
-      <div class="lead-card"><div class="lead-role">Co-Owner</div><div class="lead-name">Freezie</div></div>
-      <div class="lead-card"><div class="lead-role">FS Lead</div><div class="lead-name">Jakz</div></div>
-      <div class="lead-card"><div class="lead-role">FS Lead</div><div class="lead-name">Paradise</div></div>
-      <div class="lead-card"><div class="lead-role">SMM Lead</div><div class="lead-name">tr1xy</div></div>
-      <div class="lead-card"><div class="lead-role">SMM Lead</div><div class="lead-name">Tei</div></div>
-      <div class="lead-card"><div class="lead-role">CCH Lead</div><div class="lead-name">Cbaz</div></div>
-      <div class="lead-card"><div class="lead-role">CCH Lead</div><div class="lead-name">Mossa</div></div>
-      <div class="lead-card"><div class="lead-role">Comp Lead</div><div class="lead-name">k4mz</div></div>
-      <div class="lead-card"><div class="lead-role">NF Lead</div><div class="lead-name">Coil</div></div>
-      <div class="lead-card"><div class="lead-role">NF Lead</div><div class="lead-name">Heikikette</div></div>
-      <div class="lead-card"><div class="lead-role">CC Lead</div><div class="lead-name">Renji</div></div>
-      <div class="lead-card"><div class="lead-role">CC Lead</div><div class="lead-name">Perplex</div></div>
-      <div class="lead-card"><div class="lead-role">GFX Lead</div><div class="lead-name">Arwik</div></div>
-      <div class="lead-card"><div class="lead-role">GFX Lead</div><div class="lead-name">Xeno</div></div>
+      
+      <!-- Ryuhika (Owner - Variante Speciale) -->
+      <div class="lead-card owner-variant">
+        <div class="pfp-wrapper">
+          <img src="ryu.png" class="lead-pfp" alt="Ryuhika PFP">
+          <!-- <img src="link_bandiera.png" class="pfp-badge" alt="Flag"> -->
+        </div>
+        <div class="lead-name-pill">Ryuhika</div>
+        <div class="lead-role">Owner</div>
+      </div>
+
+      <!-- Metal (Owner - Variante Speciale) -->
+      <div class="lead-card owner-variant">
+        <div class="pfp-wrapper">
+          <img src="metal.png" class="lead-pfp" alt="Metal PFP">
+        </div>
+        <div class="lead-name-pill">Metal</div>
+        <div class="lead-role">Owner</div>
+      </div>
+
+      <!-- Freezie -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="freezie.jpg" class="lead-pfp" alt="Freezie PFP">
+        </div>
+        <div class="lead-name-pill">Freezie</div>
+        <div class="lead-role">Co-Owner</div>
+      </div>
+
+      <!-- Jakz -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="jakz.jpg" class="lead-pfp" alt="Jakz PFP">
+        </div>
+        <div class="lead-name-pill">Jakz</div>
+        <div class="lead-role">FS Lead</div>
+      </div>
+
+      <!-- Paradise -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="paradise.png" class="lead-pfp" alt="Paradise PFP">
+        </div>
+        <div class="lead-name-pill">Paradise</div>
+        <div class="lead-role">FS Lead</div>
+      </div>
+
+      <!-- tr1xy -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="trixy.png" class="lead-pfp" alt="tr1xy PFP">
+        </div>
+        <div class="lead-name-pill">tr1xy</div>
+        <div class="lead-role">SMM Lead</div>
+      </div>
+
+      <!-- Tei -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="tei.png" class="lead-pfp" alt="Tei PFP">
+        </div>
+        <div class="lead-name-pill">Tei</div>
+        <div class="lead-role">SMM Lead</div>
+      </div>
+
+      <!-- Cbaz -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="cbaz.png" class="lead-pfp" alt="Cbaz PFP">
+        </div>
+        <div class="lead-name-pill">Cbaz</div>
+        <div class="lead-role">CCH Lead</div>
+      </div>
+
+      <!-- Mossa -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="mossa.png" class="lead-pfp" alt="Mossa PFP">
+        </div>
+        <div class="lead-name-pill">Mossa</div>
+        <div class="lead-role">CCH Lead</div>
+      </div>
+
+      <!-- k4mz -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="kamz.png" class="lead-pfp" alt="k4mz PFP">
+        </div>
+        <div class="lead-name-pill">k4mz</div>
+        <div class="lead-role">Comp Lead</div>
+      </div>
+
+      <!-- Coil -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="coil.png" class="lead-pfp" alt="Coil PFP">
+        </div>
+        <div class="lead-name-pill">Coil</div>
+        <div class="lead-role">NF Lead</div>
+      </div>
+
+      <!-- Heikikette -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="heike.gif" class="lead-pfp" alt="Heikikette PFP">
+        </div>
+        <div class="lead-name-pill">Heikikette</div>
+        <div class="lead-role">NF Lead</div>
+      </div>
+
+      <!-- Renji -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="renji.png" class="lead-pfp" alt="Renji PFP">
+        </div>
+        <div class="lead-name-pill">Renji</div>
+        <div class="lead-role">CC Lead</div>
+      </div>
+
+      <!-- Perplex -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="perplex.jpg" class="lead-pfp" alt="Perplex PFP">
+        </div>
+        <div class="lead-name-pill">Perplex</div>
+        <div class="lead-role">CC Lead</div>
+      </div>
+
+      <!-- Arwik -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="arwik.png" class="lead-pfp" alt="Arwik PFP">
+        </div>
+        <div class="lead-name-pill">Arwik</div>
+        <div class="lead-role">GFX Lead</div>
+      </div>
+
     </div>
 
     <div class="roster-label reveal">Web Developer</div>
     <div class="lead-grid reveal">
-      <div class="lead-card"><div class="lead-role">Web Developer</div><div class="lead-name">Eli</div></div>
-      <div class="lead-card"><div class="lead-role">Web Developer</div><div class="lead-name">Samu</div></div>
+      
+      <!-- Eli -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="eli.png" class="lead-pfp" alt="Eli PFP">
+        </div>
+        <div class="lead-name-pill">Eli</div>
+        <div class="lead-role">Web Developer</div>
+      </div>
+      
+      <!-- Samu (Con la sua foto profilo reale configurata) -->
+      <div class="lead-card">
+        <div class="pfp-wrapper">
+          <img src="samu.jpg" class="lead-pfp" alt="Samu PFP">
+        </div>
+        <div class="lead-name-pill">Samu</div>
+        <div class="lead-role">Web Developer</div>
+      </div>
+
     </div>
 <div class="roster-label reveal">Members</div>
 
@@ -801,7 +1024,6 @@ footer{
       <span class="marquee-name">blur</span>
       <span class="marquee-name">yxvk</span>
       <span class="marquee-name">Haze</span>
-      <span class="marquee-name">xeno</span>
     </div>
   </div>
 </div>
